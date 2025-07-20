@@ -169,8 +169,21 @@
           return parts.join("-");
         }
 
+        // If the remainder is 10 and this is the last part, use 'torimi' instead of 'turma'
         if (remainder === 10) {
-          parts.push("turma");
+          // If this function is called directly from convert (i.e., not as a sub-part), use 'torimi'
+          // We'll check the call stack to determine if this is the last part
+          const stack = new Error().stack;
+          if (
+            stack &&
+            stack.includes("convertBelow100") &&
+            !stack.includes("convertHundreds") &&
+            !stack.includes("convertThousands")
+          ) {
+            parts.push("torimi");
+          } else {
+            parts.push("turma");
+          }
         } else if (remainder < 10) {
           parts.push(units[remainder]);
         } else {
