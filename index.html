@@ -160,19 +160,26 @@
         const twenties = Math.floor(num / 20);
         const remainder = num % 20;
         let parts = [];
+
         if (twenties > 0) {
           parts.push(tens[twenties]);
         }
+
         if (remainder === 0) {
           return parts.join("-");
         }
-        if (remainder < 10) {
+
+        if (remainder === 10) {
+          parts.push("turma");
+        } else if (remainder < 10) {
           parts.push(units[remainder]);
         } else {
           parts.push("turma-" + units[remainder - 10]);
         }
+
         return parts.join("-");
       }
+
       function convertHundreds(num) {
         const hundreds = Math.floor(num / 100);
         const remainder = num % 100;
