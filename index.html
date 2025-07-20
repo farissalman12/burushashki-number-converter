@@ -6,31 +6,107 @@
     <title>Burushaski Number Converter</title>
     <style>
       body {
-        font-family: Arial, sans-serif;
-        padding: 20px;
-        max-width: 600px;
-        margin: auto;
+        background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+        min-height: 100vh;
+        font-family: "Segoe UI", Arial, sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
       }
-      input,
+      .container {
+        background: #fff;
+        border-radius: 18px;
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+        padding: 2.5rem 2rem 2rem 2rem;
+        max-width: 400px;
+        width: 100%;
+        text-align: center;
+        transition: box-shadow 0.3s;
+      }
+      .container:hover {
+        box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.22);
+      }
+      h1 {
+        color: #2d3a4b;
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+        letter-spacing: 1px;
+      }
+      p {
+        color: #4b5d6b;
+        margin-bottom: 1.5rem;
+        font-size: 1.05rem;
+      }
+      input[type="number"] {
+        width: 80%;
+        padding: 0.7rem 1rem;
+        border: 1.5px solid #b3c0d1;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        outline: none;
+        margin-bottom: 1rem;
+        transition: border-color 0.2s, box-shadow 0.2s;
+        box-sizing: border-box;
+      }
+      input[type="number"]:focus {
+        border-color: #5b9df9;
+        box-shadow: 0 0 0 2px #b3d1ff55;
+      }
       button {
-        font-size: 1rem;
-        padding: 8px;
-        margin-top: 8px;
+        background: linear-gradient(90deg, #5b9df9 0%, #3a7bd5 100%);
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        padding: 0.7rem 2.2rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: 0 2px 8px 0 rgba(90, 155, 249, 0.1);
+        transition: background 0.2s, transform 0.1s;
+        margin-top: 0.5rem;
+      }
+      button:hover,
+      button:focus {
+        background: linear-gradient(90deg, #3a7bd5 0%, #5b9df9 100%);
+        transform: translateY(-2px) scale(1.03);
       }
       #result {
-        margin-top: 20px;
+        margin-top: 2rem;
         font-weight: bold;
+        font-size: 1.2rem;
+        color: #2d3a4b;
+        min-height: 2.2em;
+        background: #f4f8fb;
+        border-radius: 8px;
+        padding: 1rem 0.5rem;
+        box-shadow: 0 1px 4px 0 rgba(90, 155, 249, 0.07);
+        transition: background 0.2s;
+      }
+      @media (max-width: 500px) {
+        .container {
+          padding: 1.2rem 0.5rem 1.5rem 0.5rem;
+          max-width: 98vw;
+        }
+        h1 {
+          font-size: 1.3rem;
+        }
+        input[type="number"],
+        button {
+          font-size: 1rem;
+        }
       }
     </style>
   </head>
   <body>
-    <h1>Burushaski Number Converter</h1>
-    <p>Enter an integer (1 to 1,000,000):</p>
-    <input id="numberInput" type="number" min="1" max="1000000" />
-    <button onclick="convertNumber()">Convert</button>
-
-    <div id="result"></div>
-
+    <div class="container">
+      <h1>Burushaski Number Converter</h1>
+      <p>Enter an integer (1 to 1,000,000):</p>
+      <input id="numberInput" type="number" min="1" max="1000000" />
+      <br />
+      <button onclick="convertNumber()">Convert</button>
+      <div id="result"></div>
+    </div>
     <script>
       const units = {
         1: "hik",
@@ -43,14 +119,12 @@
         8: "altambi",
         9: "huntí",
       };
-
       const tens = {
         1: "altar", // 20
         2: "alto-altar", // 40
         3: "iski-altar", // 60
         4: "walti-altar", // 80
       };
-
       function convert(num) {
         if (!Number.isInteger(num)) {
           throw new Error("Input must be an integer.");
@@ -63,97 +137,73 @@
         if (num > 1000000) {
           throw new Error("Maximum allowed value is 1,000,000.");
         }
-
         if (num < 10) {
           return units[num];
         }
-
         if (num < 20) {
           return "turma-" + units[num - 10];
         }
-
         if (num < 100) {
           return convertBelow100(num);
         }
-
         if (num < 1000) {
           return convertHundreds(num);
         }
-
         if (num < 1000000) {
           return convertThousands(num);
         }
-
         if (num === 1000000) {
           return "saas-tha";
         }
       }
-
       function convertBelow100(num) {
         const twenties = Math.floor(num / 20);
         const remainder = num % 20;
         let parts = [];
-
         if (twenties > 0) {
           parts.push(tens[twenties]);
         }
-
         if (remainder === 0) {
           return parts.join("-");
         }
-
         if (remainder < 10) {
           parts.push(units[remainder]);
         } else {
           parts.push("turma-" + units[remainder - 10]);
         }
-
         return parts.join("-");
       }
-
       function convertHundreds(num) {
         const hundreds = Math.floor(num / 100);
         const remainder = num % 100;
-
         if (num === 100) {
           return "hik tha";
         }
-
         let parts = [];
         parts.push(units[hundreds] + " tha");
-
         if (remainder === 0) {
           return parts.join(" ");
         }
-
         parts.push("ke");
         parts.push(convert(remainder));
-
         return parts.join(" ");
       }
-
       function convertThousands(num) {
         const thousands = Math.floor(num / 1000);
         const remainder = num % 1000;
-
         let parts = [];
-
         if (thousands === 1) {
           parts.push("saas");
         } else {
           parts.push(convert(thousands) + " saas");
         }
-
         if (remainder === 0) {
           return parts.join(" ");
         }
-
         parts.push("ke");
         parts.push(convert(remainder));
-
         return parts.join(" ");
       }
-
       function convertNumber() {
         const input = document.getElementById("numberInput").value;
         const resultDiv = document.getElementById("result");
