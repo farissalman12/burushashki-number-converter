@@ -1,0 +1,10 @@
+{
+  "name": "burushashki-number-converter",
+  "version": "1.0.0",
+  "description": "A simple web app to convert numbers into their Burushaski language representation.",
+  "scripts": {
+    "test": "node --test converter.test.js"
+  },
+  "author": "",
+  "license": "MIT"
+}
