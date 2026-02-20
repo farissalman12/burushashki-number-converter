@@ -118,7 +118,7 @@ function convertBelow100(num) {
   tokens.push(sep("-"));
 
   if (remainder === 10) {
-    tokens.push(createToken("turma", "Ten", "remainder", "+ 10", 10));
+    tokens.push(createToken("torimi", "Ten", "remainder", "+ 10", 10));
   } else if (remainder < 10) {
     tokens.push(createToken(units[remainder], engUnits[remainder], "remainder", `+ ${remainder}`, remainder));
   } else {

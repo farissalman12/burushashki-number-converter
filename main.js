@@ -53,12 +53,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 resultContainer.innerHTML += `
                 <div class="tooltip-trigger relative group cursor-help border-b-2 border-dotted border-slate-300 dark:border-slate-600 hover:text-slate-500 pb-1 transition-colors">
                     <span>${token.word}</span>
-                    <div class="tooltip-content absolute bottom-full left-1/2 -translate-x-1/2 mb-4 w-64 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-xl p-4 shadow-2xl opacity-0 invisible transition-opacity duration-200 z-50 pointer-events-none">
-                        <div class="flex justify-between items-start mb-2 border-b border-slate-700 dark:border-slate-200 pb-2">
+                    <div class="tooltip-content absolute bottom-full left-1/2 -translate-x-1/2 mb-4 w-[200px] sm:w-64 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-xl p-3 sm:p-4 shadow-2xl opacity-0 invisible transition-opacity duration-200 z-[100] pointer-events-none">
+                        <div class="flex justify-between items-start mb-2 border-b border-slate-700 dark:border-slate-200 pb-2 gap-4">
                             <span class="font-bold text-lg">${token.word}</span>
                             <span class="text-xs bg-slate-500 text-white px-1.5 py-0.5 rounded uppercase tracking-wider">${token.type}</span>
                         </div>
-                        <div class="space-y-1 text-sm">
+                        <div class="space-y-1 text-xs sm:text-sm">
                             <div class="flex justify-between">
                                 <span class="text-slate-400 dark:text-slate-500">English:</span>
                                 <span class="font-medium">${token.english}</span>
@@ -75,12 +75,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 resultContainer.innerHTML += `
                 <div class="tooltip-trigger relative group cursor-help border-b-2 border-dotted border-slate-300 dark:border-slate-600 hover:border-primary pb-1 transition-colors">
                     <span>${token.word}</span>
-                    <div class="tooltip-content absolute bottom-full left-1/2 -translate-x-1/2 mb-4 w-64 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-xl p-4 shadow-2xl opacity-0 invisible transition-opacity duration-200 z-50 pointer-events-none">
-                        <div class="flex justify-between items-start mb-2 border-b border-slate-700 dark:border-slate-200 pb-2">
+                    <div class="tooltip-content absolute bottom-full left-1/2 -translate-x-1/2 mb-4 w-[200px] sm:w-64 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-xl p-3 sm:p-4 shadow-2xl opacity-0 invisible transition-opacity duration-200 z-[100] pointer-events-none">
+                        <div class="flex justify-between items-start mb-2 border-b border-slate-700 dark:border-slate-200 pb-2 gap-4">
                             <span class="font-bold text-lg">${token.word}</span>
                             <span class="text-xs ${bgCol} text-white px-1.5 py-0.5 rounded uppercase tracking-wider">${token.type}</span>
                         </div>
-                        <div class="space-y-1 text-sm">
+                        <div class="space-y-1 text-xs sm:text-sm">
                             <div class="flex justify-between">
                                 <span class="text-slate-400 dark:text-slate-500">English:</span>
                                 <span class="font-medium">${token.english}</span>

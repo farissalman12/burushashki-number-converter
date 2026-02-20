@@ -16,9 +16,9 @@ describe('Burushaski Number Converter (Tokenized)', () => {
         assert.strictEqual(stringify(convert(10)), 'torimi');
         assert.strictEqual(stringify(convert(15)), 'turma-číndi');
         assert.strictEqual(stringify(convert(20)), 'altar');
-        assert.strictEqual(stringify(convert(30)), 'altar-turma');
+        assert.strictEqual(stringify(convert(30)), 'altar-torimi');
         assert.strictEqual(stringify(convert(40)), 'alto-altar');
-        assert.strictEqual(stringify(convert(50)), 'alto-altar-turma');
+        assert.strictEqual(stringify(convert(50)), 'alto-altar-torimi');
         assert.strictEqual(stringify(convert(60)), 'iski-altar');
         assert.strictEqual(stringify(convert(99)), 'walti-altar-turma-huntí');
     });
@@ -27,7 +27,7 @@ describe('Burushaski Number Converter (Tokenized)', () => {
         assert.strictEqual(stringify(convert(100)), 'hik tha');
         assert.strictEqual(stringify(convert(105)), 'hik tha ke číndi');
         assert.strictEqual(stringify(convert(200)), 'altó tha');
-        assert.strictEqual(stringify(convert(350)), 'iskí tha ke alto-altar-turma');
+        assert.strictEqual(stringify(convert(350)), 'iskí tha ke alto-altar-torimi');
     });
 
     test('converts thousands correctly', () => {
