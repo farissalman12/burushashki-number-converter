@@ -46,9 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 `;
             } else if (token.type === 'operator') {
-                // If it's a word operator like 'ke' (And), display the word not just '+'
-                // But wait, the exact word is 'ke'. Let's show it as a simple text node because it's not hoverable (or maybe it is?)
-                // Actually, 'operator' had values from our generator! `createToken("ke", "And", "operator", "+", null)`
                 const color = getColorClass(token.type);
                 resultContainer.innerHTML += `
                 <div class="tooltip-trigger relative group cursor-help border-b-2 border-dotted border-slate-300 dark:border-slate-600 hover:text-slate-500 pb-1 transition-colors">
