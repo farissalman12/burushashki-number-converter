@@ -164,7 +164,14 @@ function convertThousands(num) {
   const remainder = num % 1000;
   let tokens = [];
 
+  if (num === 1000) {
+    tokens.push(createToken("hik saas", "One Thousand", "base", "1000", 1000));
+    return tokens;
+  }
+
   if (thousands === 1) {
+    tokens.push(createToken("hik", "One", "multiplier", 1, 1));
+    tokens.push(sep(" "));
     tokens.push(createToken("saas", "Thousand", "base", "× 1000", 1000));
   } else {
     tokens = tokens.concat(convertCore(thousands));

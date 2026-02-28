@@ -31,8 +31,9 @@ describe('Burushaski Number Converter (Tokenized)', () => {
     });
 
     test('converts thousands correctly', () => {
-        assert.strictEqual(stringify(convert(1000)), 'saas');
-        assert.strictEqual(stringify(convert(1020)), 'saas ke altar');
+        assert.strictEqual(stringify(convert(1000)), 'hik saas');
+        assert.strictEqual(stringify(convert(1020)), 'hik saas ke altar');
+        assert.strictEqual(stringify(convert(1100)), 'hik saas ke hik tha');
         assert.strictEqual(stringify(convert(2000)), 'altó saas');
         assert.strictEqual(stringify(convert(15000)), 'turma-číndi saas');
     });
